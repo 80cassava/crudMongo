@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(bodyParser.urlencoded({
@@ -14,7 +15,7 @@ mongoose.Promise = global.Promise;
 
 mongoose.connect(dbConfig.url, {
   useNewUrlParser: true,
-  useUnifiedTopology:true
+  useUnifiedTopology: true
 }).then(() => {
   console.log("Successfully connected to the database");
 }).catch(err => {
@@ -30,6 +31,6 @@ app.get('/', (req, res) => {
 
 require('./app/routes/note.routes.js')(app);
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log("Server is listening on port 3000");
 });
