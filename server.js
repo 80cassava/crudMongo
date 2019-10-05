@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-// const PORT = process.env.PORT || 3000;
 const app = express();
 
 app.use(bodyParser.urlencoded({
@@ -31,7 +30,8 @@ app.get('/', (req, res) => {
 
 require('./app/routes/note.routes.js')(app);
 
-app.listen(process.env.PORT || 3000, () => {
-  // console.log("Server is listening on port "+port);
-  console.log("Server is listening");
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+  // console.log("Server is listening");
 });
