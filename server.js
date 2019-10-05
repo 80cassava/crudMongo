@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 
 require('./app/routes/note.routes.js')(app);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 app.listen(port, function(err) {
   if (err) throw err
   console.log(`Server is listening on port ${port}`);
